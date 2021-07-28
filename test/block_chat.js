@@ -18,12 +18,20 @@ contract('BlockChat', function (accounts) {
     })
 
     // Assert
-    const expectedResponseToMessage = 'thank you for that beautiful message.';
+    const expectedResponseToMessage = 'thank you for that beautiful message.'
 
-    console.log(result)
-    console.log({ result })
+    // console.log(result)
+    // console.log({ result })
 
-    expect(result).to.equal(expectedResponseToMessage);
+    // expect(result).to.equal(expectedResponseToMessage)
+
+    // expect(result.receipt.logs[0].args.message).to.equal(mockMessage)
+    // expect(result.receipt.logs[0].args.messageCount).to.equal(1)
+
+
+    console.log(JSON.stringify(result))
+
+    truffleAssert.eventEmitted(result, 'MessageSpoken')
 
     truffleAssert.eventEmitted(result, 'MessageSpoken', (returnValues) => {
 
